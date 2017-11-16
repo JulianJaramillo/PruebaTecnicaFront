@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Header, Container } from 'semantic-ui-react'
 
+//Creacion Componente Header de la aplicacion
 class Main extends Component {
   render() {
     return (

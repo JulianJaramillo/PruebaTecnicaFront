@@ -3,7 +3,8 @@ import { Field, reduxForm, SubmissionError } from 'redux-form'
 import { Input, Button, Message } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
-class Formulario extends Component {
+//Creacion del componente formulario que se presentara en la pagina
+class Formulario extends Component { 
 
   LenguajeInput({ input, meta: { touched, error }, ...custom }) {
     const hasError = touched && error !== undefined;
@@ -25,6 +26,7 @@ class Formulario extends Component {
     );
   }
 
+  //Creacion del cmetodo submit que enviara el parametro ingresado al archivo sagas que consume el servicio.
   submit({ Lenguaje }, dispatch) {
    
     return new Promise((resolve, reject) => {
@@ -39,7 +41,7 @@ class Formulario extends Component {
     });
   }
 
-
+//Creacion de las etiquetas del formulario donde se ingresara el texto correspondiente
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -52,6 +54,7 @@ class Formulario extends Component {
   }
 }
 
+//Validacion del Field por si se encuentra vacio
 const validate = values => {
   const errors = {}
   if (!values.Lenguaje || values.Lenguaje.trim() === '') {

@@ -2,8 +2,9 @@ import { takeEvery } from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
 import request from 'superagent';
 
+// Se consume el servicio y se retorna la respuesta
 function postlenguajesHtml(Lenguaje) {
-  return  request.post('http://localhost/ServiceTest/api/lenguajes/retorno')
+  return  request.post('http://localhost/ServiceTest/api/lenguajes/retorno') // Se cambia la direccion dependiendo de donde se desplegue o ejecute el servicio
     .set('Content-Type', 'application/json')
     .send('{"Entrada":" '+ Lenguaje + '" ,"Compilado":""}')
     .then((data) => {

@@ -5,17 +5,16 @@ import 'semantic-ui-css/semantic.min.css';
 import logo from './logo.svg';
 import './App.css';
 
+//Definicion de las propiedades de react que mapearan los datos
 class Home extends Component {
-
   constructor(props) {
     super(props);
-
-    this.yahooWidget = this.yahooWidget.bind(this);
+    this.LenguajeWidget = this.LenguajeWidget.bind(this);
 }
   
 
-  yahooWidget() {
-    
+// Creacion de componente donde se inyectara la respuesta del servicio
+LenguajeWidget() {
     const query = this.props.lenguajeshtml.Value;
     console.log(query);
     if (query) {
@@ -37,7 +36,6 @@ class Home extends Component {
           <Header as='h3' textAlign='center'>
           {domElemnts}
           </Header>
-          <div dangerouslySetInnerHTML={{__html: html}}></div>
         </div>
       );
     } else {
@@ -45,11 +43,12 @@ class Home extends Component {
     }
   }
 
+  //Renderizacion del formulario y respuesta anterior
   render() {
     return (
       <div>
         <Formulario/>
-        {this.yahooWidget()}
+        {this.LenguajeWidget()}
       </div>
     );
   }
