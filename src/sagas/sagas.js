@@ -3,7 +3,7 @@ import { fork, call, put } from 'redux-saga/effects';
 import request from 'superagent';
 
 function postlenguajesHtml(Lenguaje) {
-    request.post('http://localhost/ServiceTest/api/lenguajes/retorno')
+  return  request.post('http://localhost/ServiceTest/api/lenguajes/retorno')
     .set('Content-Type', 'application/json')
     .send('{"Entrada":" '+ Lenguaje + '" ,"Compilado":""}')
     .then((data) => {
@@ -13,8 +13,7 @@ function postlenguajesHtml(Lenguaje) {
 
 function* callPostlenguajesHtml({Lenguaje, resolve, reject}) {
   const result = yield call(postlenguajesHtml, Lenguaje);
-  console.log(result);
-  if (result.query.results) {
+  if (result.SuccessfulOperation) {
     yield put({type: "LENGUAJE_FETCHED", result});
     yield call(resolve);
   } else {
@@ -23,11 +22,12 @@ function* callPostlenguajesHtml({Lenguaje, resolve, reject}) {
 }
 
 function* postlenguajesHtmlSaga() {
+  console.log(callPostlenguajesHtml.Lenguaje);
   yield* takeEvery("FETCH_LENGUAJE", callPostlenguajesHtml);
 }
 
 export default function* root() {
   yield [
-    fork(postlenguajesHtml)
+    fork(postlenguajesHtmlSaga)
   ]
 }

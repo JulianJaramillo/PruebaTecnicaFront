@@ -10,20 +10,16 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {Entrada: true};
-    this.state = {Compilado: ""};
-    this.state = {SuccessfulOperation: true};
-    this.state = {Message: true};
-    this.state = {Exception: true};
-  }
+    this.yahooWidget = this.yahooWidget.bind(this);
+}
+  
 
   yahooWidget() {
     
-    const Compilado = this.props.Compilado;
-    console.log(Compilado)
-    if (Compilado != "") {
-        console.log("Entre");
-      let html = this.props.Compilado;
+    const query = this.props.lenguajeshtml.Value;
+    console.log(query);
+    if (query) {
+      let html = query.Compilado;
       let breakString = "<br/>";
       let domElemnts = "<!DOCTYPE html>";
       domElemnts += "<html>";
@@ -32,10 +28,9 @@ class Home extends Component {
       domElemnts += "    <title></title>";
       domElemnts += "  </head>";
       domElemnts += "  <body>";
-      domElemnts += this.props.Compilado;
+      domElemnts += query.Compilado;
       domElemnts += "  </body>";
       domElemnts += "</html>";
-      // remove <![CDATA[ and ]]>
       return (
         <div>
           <br/>

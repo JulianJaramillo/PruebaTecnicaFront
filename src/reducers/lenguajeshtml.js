@@ -1,4 +1,5 @@
 function lenguajesHtml(state = {}, action) {
+ 
     switch(action.type) {
       case 'LENGUAJE_FETCHED':
         return action.result;
